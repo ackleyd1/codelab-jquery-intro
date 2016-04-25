@@ -6,32 +6,30 @@ var alternate = 0
 $squares.on('click', function(){
     if ($(this).text() === '') {
         if (alternate % 2 === 0) {
-            $(this).text('X')
             alternate++
-            changeBG(this)
+            changeBG($(this), 'X')
         }
         else {
-            $(this).text('O')
             alternate++
-            changeBG(this)
+            changeBG($(this), 'O')
         }
     }
 })
 // called when we click the reset button, changes all text to '' and
 // the background to white
 $reset.on('click', function() {
-    $squares.text('')
     changeBG($squares)
 })
 // called when we need to update the background color of a square
-function changeBG(element){
-    if($(element).text() == 'X') {
-        element.style.background = 'red'
+function changeBG(jQobject, name=''){
+    $(jQobject).text(name)
+    if(name === 'X') {
+        jQobject.css('background', 'red')
     }
-    else if ($(element).text() == 'O') {
-        element.style.background = 'blue'
+    else if (name === 'O') {
+        jQobject.css('background', 'blue')
     }
     else {
-        element.css('background', 'white')
+        jQobject.css('background', 'white')
     }
 }
