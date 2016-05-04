@@ -4,15 +4,15 @@ var alternate = 0
 // called when we click a square, changes its text to a x or a o depending on
 // the value of alternate, then updates the background accordingly
 $squares.on('click', function(){
-    if ($(this).text() === '') {
+    jQitem = $(this)
+    if (jQitem.text() === '') {
         if (alternate % 2 === 0) {
-            alternate++
-            changeBG($(this), 'X')
+            changeBG(jQitem, 'X')
         }
         else {
-            alternate++
-            changeBG($(this), 'O')
+            changeBG(jQitem, 'O')
         }
+        alternate++
     }
 })
 // called when we click the reset button, changes all text to '' and
@@ -22,7 +22,7 @@ $reset.on('click', function() {
 })
 // called when we need to update the background color of a square
 function changeBG(jQobject, name=''){
-    $(jQobject).text(name)
+    jQobject.text(name)
     if(name === 'X') {
         jQobject.css('background', 'red')
     }
